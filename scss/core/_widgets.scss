@@ -50,7 +50,7 @@
       }
 
       span {
-        font-size: 10px;
+        font-size: 12px;
         font-weight: 500;
         color: $border-color;
         text-transform: uppercase;
@@ -74,93 +74,8 @@
 }
 
 // ---------------------------------------
-// .social-box
+// .horizontal-bars
 // ---------------------------------------
-
-.social-box {
-  min-height: 160px;
-  margin-bottom: 2 * $card-spacer-y;
-  text-align: center;
-  background: #fff;
-  border: $card-border-width solid $card-border-color;
-  @include border-radius($card-border-radius);
-
-  i {
-    display: block;
-    margin: -1px -1px 0;
-    font-size: 40px;
-    line-height: 90px;
-    background: $gray-200;
-
-    @include border-radius($card-border-radius $card-border-radius 0 0);
-  }
-
-  .chart-wrapper {
-    height: 90px;
-    margin: -90px 0 0;
-
-    canvas {
-      width: 100% !important;
-      height: 90px !important;
-    }
-  }
-
-  ul {
-    padding: 10px 0;
-    list-style: none;
-
-
-    li {
-      display: block;
-      float: left;
-      width: 50%;
-
-      &:first-child {
-        border-right: 1px solid $border-color;
-      }
-
-      strong {
-        display: block;
-        font-size: 20px;
-      }
-
-      span {
-        font-size: 10px;
-        font-weight: 500;
-        color: $border-color;
-        text-transform: uppercase;
-      }
-    }
-  }
-
-  &.facebook {
-    i {
-      color: #fff;
-      background: $facebook;
-    }
-  }
-
-  &.twitter {
-    i {
-      color: #fff;
-      background: $twitter;
-    }
-  }
-
-  &.linkedin {
-    i {
-      color: #fff;
-      background: $linkedin;
-    }
-  }
-
-  &.google-plus {
-    i {
-      color: #fff;
-      background: $google-plus;
-    }
-  }
-}
 
 .horizontal-bars {
   padding: 0;

@@ -1,7 +1,8 @@
 // @flow
-import React, {Component} from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import {mapToCssModules} from 'reactstrap/lib/utils';
+import {Card, CardBody, CardFooter} from 'reactstrap';
 
 type Props = {
   className: string,
