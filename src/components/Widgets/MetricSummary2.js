@@ -11,34 +11,26 @@ type Props = {
   threshold: number  // TODO: make this a boolean function
 };
 
-const defaultProps = {
-
+const MetricSummary3 = (props: Props) => {
+  const {className, cssModule, currentValue, average, threshold, ...attributes} = props;
+  const okay = currentValue > threshold ? 'okay' : 'bad';
+  const classes = mapToCssModules(classNames("metric-box", className, okay), cssModule);
+  
+  return (
+    <div className={classes}>
+      <span className={"mainText"}>{currentValue}</span>
+      <ul>
+        <li>
+          <strong>{average}</strong>
+          <span>average</span>
+        </li>
+        <li>
+          <strong>{threshold}</strong>
+          <span>threshold</span>
+        </li>
+      </ul>
+    </div>
+  )
 };
 
-class MetricSummary2 extends Component<Props> {
-  render() {
-    const {className, cssModule, currentValue, average, threshold, ...attributes} = this.props;
-
-    const okay = currentValue > threshold ? 'okay' : 'bad';
-
-    const classes = mapToCssModules(classNames("metric-box", className, okay), cssModule);
-
-    return (
-      <div className={classes}>
-        <span className={"mainText"}>{currentValue}</span>
-        <ul>
-          <li>
-            <strong>{average}</strong>
-            <span>average</span>
-          </li>
-          <li>
-            <strong>{threshold}</strong>
-            <span>threshold</span>
-          </li>
-        </ul>
-      </div>
-    )
-  }
-}
-
-export default MetricSummary2;
+export default MetricSummary3;
