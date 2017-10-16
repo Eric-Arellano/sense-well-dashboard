@@ -7,6 +7,7 @@ type Props = {
   className: string,
   cssModule: any,
   name: string,
+  unit: string,
   currentValue: number,
   date: Date,
   average: number,
@@ -15,7 +16,7 @@ type Props = {
 };
 
 const MetricSummary = (props: Props) => {
-  const {className, cssModule, name, currentValue, date, average, threshold, thresholdText, ...attributes} = props;
+  const {className, cssModule, name, unit, currentValue, date, average, threshold, thresholdText, ...attributes} = props;
   const okay = threshold(currentValue) ? 'okay' : 'bad';
   const daysDiff = Math.round((new Date() - date)/(1000*60*60*24));
   const classes = mapToCssModules(classNames("metric-box", className, okay), cssModule);
@@ -23,7 +24,10 @@ const MetricSummary = (props: Props) => {
   return (
     <div>
       <div className={classes}>
-        <span className={"mainText"}>{currentValue}</span>
+        <div className={"mainText"}>
+          <span>{currentValue}</span>
+          <span>{unit}</span>
+        </div>
         <ul>
           <li>
             <strong>{average}</strong>
