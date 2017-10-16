@@ -1,13 +1,12 @@
 // @flow
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {mapToCssModules} from 'reactstrap/lib/utils';
 
 type Props = {
   className: string,
   cssModule: any,
-  variant2: string,
+  currentValue: number,
   average: number,
   threshold: number  // TODO: make this a boolean function
 };
@@ -18,19 +17,15 @@ const defaultProps = {
 
 class MetricSummary2 extends Component<Props> {
   render() {
-    const {className, cssModule, variant2, average, threshold, ...attributes} = this.props;
+    const {className, cssModule, currentValue, average, threshold, ...attributes} = this.props;
 
-    if (!variant2 || ['facebook', 'twitter', 'linkedin', 'google-plus'].indexOf(variant2) < 0) {
-      return ( null );
-    }
+    const okay = currentValue > threshold ? 'okay' : 'bad';
 
-    const icon = "fa fa-" + variant2;
-
-    const classes = mapToCssModules(classNames("social-box", className, variant2), cssModule);
+    const classes = mapToCssModules(classNames("metric-box", className, okay), cssModule);
 
     return (
       <div className={classes}>
-        <i className={icon}></i>
+        <span className={"mainText"}>{currentValue}</span>
         <ul>
           <li>
             <strong>{average}</strong>
