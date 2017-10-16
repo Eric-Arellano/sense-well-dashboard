@@ -1,21 +1,22 @@
+// @flow
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {mapToCssModules} from 'reactstrap/lib/utils';
 
-const propTypes = {
-  className: PropTypes.string,
-  cssModule: PropTypes.object,
-  variant2: PropTypes.string,
-  average: PropTypes.number,
-  threshold: PropTypes.number  // TODO: make this a boolean function
+type Props = {
+  className: string,
+  cssModule: any,
+  variant2: string,
+  average: number,
+  threshold: number  // TODO: make this a boolean function
 };
 
 const defaultProps = {
 
 };
 
-class MetricSummary2 extends Component {
+class MetricSummary2 extends Component<Props> {
   render() {
     const {className, cssModule, variant2, average, threshold, ...attributes} = this.props;
 
@@ -44,8 +45,5 @@ class MetricSummary2 extends Component {
     )
   }
 }
-
-MetricSummary2.propTypes = propTypes;
-MetricSummary2.defaultProps = defaultProps;
 
 export default MetricSummary2;
