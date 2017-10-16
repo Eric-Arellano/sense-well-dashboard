@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import MetricSummary2 from "../../components/Widgets/MetricSummary2";
+import MetricSummary from "../../components/Widgets/MetricSummary";
 
 class Dashboard extends Component {
 
@@ -7,7 +7,7 @@ class Dashboard extends Component {
     return (
       <div className="animated fadeIn">
         Hello World
-        <MetricSummary2 currentValue={43} average={74} threshold={(value) => value > 20} />
+        <MetricSummary currentValue={43} average={74} threshold={(value) => value > 20} thresholdText={"> 20"} />
       </div>
     )
   }
