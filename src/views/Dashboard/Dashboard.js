@@ -7,7 +7,7 @@ class Dashboard extends Component {
     return (
       <div className="animated fadeIn">
         Hello World
-        <MetricSummary2 currentValue={43} average={74} threshold={23} />
+        <MetricSummary2 currentValue={43} average={74} threshold={(value) => value > 20} />
       </div>
     )
   }

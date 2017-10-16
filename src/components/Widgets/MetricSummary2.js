@@ -8,14 +8,14 @@ type Props = {
   cssModule: any,
   currentValue: number,
   average: number,
-  threshold: number  // TODO: make this a boolean function
+  threshold: (number) => boolean
 };
 
 const MetricSummary3 = (props: Props) => {
   const {className, cssModule, currentValue, average, threshold, ...attributes} = props;
-  const okay = currentValue > threshold ? 'okay' : 'bad';
+  const okay = threshold(currentValue) ? 'okay' : 'bad';
   const classes = mapToCssModules(classNames("metric-box", className, okay), cssModule);
-  
+
   return (
     <div className={classes}>
       <span className={"mainText"}>{currentValue}</span>
