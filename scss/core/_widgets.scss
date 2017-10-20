@@ -64,6 +64,10 @@
     border-top: 1px solid $border-color;
   }
 
+  .metricName {
+    padding-top: 0.2em;
+  }
+
   &.okay {
     .mainText {
       color: #fff;

@@ -42,7 +42,7 @@ const MetricSummary = (props: Props) => {
           <span className={"date"}>Last updated {daysDiff} days ago.</span>
         </div>
       </div>
-      <h3>{name}</h3>
+      <h3 className={"metricName"}>{name}</h3>
     </div>
   )
 };
