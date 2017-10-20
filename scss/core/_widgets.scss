@@ -3,21 +3,32 @@
 // ---------------------------------------
 
 .metric-box {
-  min-height: 160px;
+  min-height: 180px;
   margin-bottom: 2 * $card-spacer-y;
   text-align: center;
-  background: #fff;
-  border: $card-border-width solid $card-border-color;
-  @include border-radius($card-border-radius);
+
+  .widget {
+    background: #fff;
+    border: $card-border-width solid $card-border-color;
+    @include border-radius($card-border-radius);
+  }
 
   .mainText {
     display: block;
     margin: -1px -1px 0;
-    font-size: 40px;
     line-height: 90px;
     background: $gray-200;
 
     @include border-radius($card-border-radius $card-border-radius 0 0);
+
+    .currentValue {
+      font-size: 3.5em;
+    }
+
+    .unit {
+      font-size: 1.5em;
+      padding-left: 0.5em;
+    }
   }
 
   ul {
@@ -46,6 +57,11 @@
         text-transform: uppercase;
       }
     }
+  }
+
+  .lastUpdatedBox {
+    margin-top: 2em;
+    border-top: 1px solid $border-color;
   }
 
   &.okay {

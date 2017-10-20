@@ -22,11 +22,11 @@ const MetricSummary = (props: Props) => {
   const classes = mapToCssModules(classNames("metric-box", className, okay), cssModule);
 
   return (
-    <div>
-      <div className={classes}>
+    <div className={classes}>
+      <div className={"widget"}>
         <div className={"mainText"}>
-          <span>{currentValue}</span>
-          <span>{unit}</span>
+          <span className={"currentValue"}>{currentValue}</span>
+          <span className={"unit"}>{unit}</span>
         </div>
         <ul>
           <li>
@@ -38,7 +38,9 @@ const MetricSummary = (props: Props) => {
             <span>safe values</span>
           </li>
         </ul>
-        <span>Last updated {daysDiff} days ago.</span>
+        <div className={"lastUpdatedBox"}>
+          <span className={"date"}>Last updated {daysDiff} days ago.</span>
+        </div>
       </div>
       <h3>{name}</h3>
     </div>
