@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Row, Col} from 'reactstrap';
 import MetricSummary from "../../components/Widgets/MetricSummary";
+import Chart from "../../components/Chart/Chart";
 
 class Dashboard extends Component {
 
@@ -19,6 +20,11 @@ class Dashboard extends Component {
           <Col xs="12" sm="6" lg="3">
             <MetricSummary name="Salinity" unit={"μS/cm"} date={new Date(2017, 9, 14)} currentValue={0.41} average={0.84}
                            threshold={(value) => value < 0.6} thresholdText={"< 0.6"} />
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={"24"} sm={"12"} lg={"6"}>
+            <Chart/>
           </Col>
         </Row>
       </div>
