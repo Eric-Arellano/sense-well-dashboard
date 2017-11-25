@@ -13,12 +13,12 @@ import '../scss/style.scss'
 import '../scss/core/_dropdown-menu-right.scss'
 
 // Containers
-import Full from './containers/Full/'
+import { AppContainer } from 'containers'
 
 ReactDOM.render((
   <HashRouter>
     <Switch>
-      <Route path="/" name="Home" component={Full}/>
+      <Route path="/" name="Home" component={AppContainer}/>
     </Switch>
   </HashRouter>
 ), document.getElementById('root'));

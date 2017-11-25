@@ -15,6 +15,13 @@ console.log('SRC_DIR', SRC_DIR);
 
 module.exports = (env = {}) => {
   return {
+    resolve: {
+      modules: [
+        path.resolve('./src'),
+        path.resolve('./node_modules'),
+        path.resolve('./scss')
+      ]
+    },
     entry: {
       index: [SRC_DIR + '/index.js']
     },
