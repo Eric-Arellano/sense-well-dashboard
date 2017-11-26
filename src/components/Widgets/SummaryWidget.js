@@ -2,21 +2,17 @@
 import React from 'react';
 import classNames from 'classnames';
 import {mapToCssModules} from 'reactstrap/lib/utils';
+import type { MetricSummary } from 'flow/types'
 
 type Props = {
   className: string,
   cssModule: any,
-  name: string,
-  unit: string,
-  currentValue: number,
-  date: Date,
-  average: number,
-  threshold: (number) => boolean,
-  thresholdText: string
+  metricSummary: MetricSummary
 };
 
-const MetricSummary = (props: Props) => {
-  const {className, cssModule, name, unit, currentValue, date, average, threshold, thresholdText, ...attributes} = props;
+const SummaryWidget = (props: Props) => {
+  const {className, cssModule, metricSummary} = props
+  const {name, unit, currentValue, date, average, threshold, thresholdText } = metricSummary
   const okay = threshold(currentValue) ? 'okay' : 'bad';
   const daysDiff = Math.round((new Date() - date)/(1000*60*60*24));
   const classes = mapToCssModules(classNames("metric-box", className, okay), cssModule);
@@ -47,4 +43,4 @@ const MetricSummary = (props: Props) => {
   )
 };
 
-export default MetricSummary;
+export default SummaryWidget;

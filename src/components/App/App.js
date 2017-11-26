@@ -3,7 +3,7 @@ import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { Container } from 'reactstrap'
 import { Header, Sidebar, Breadcrumb, Aside, Footer } from 'components'
-import { Dashboard } from 'views'
+import { DashboardContainer } from 'containers'
 
 const App = () => {
   return (
@@ -15,7 +15,7 @@ const App = () => {
           <Breadcrumb />
           <Container fluid>
             <Switch>
-              <Route path="/dashboard" name="Dashboard" component={Dashboard}/>
+              <Route path="/dashboard" name="Dashboard" component={DashboardContainer}/>
               <Redirect from="/" to="/dashboard"/>
             </Switch>
           </Container>
