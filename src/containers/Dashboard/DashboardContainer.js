@@ -41,8 +41,9 @@ class DashboardContainer extends Component<Props, State> {
   }
 
   render () {
+    const {community} = this.props
     return (
-      <Dashboard {...this.state} />
+      <Dashboard community={community} {...this.state} />
     )
   }
 }
