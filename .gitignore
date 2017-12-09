@@ -1,15 +1,3 @@
-# dependencies
-node_modules
-
-# testing
-coverage
-
-# production
-build
-
-# misc
 .DS_Store
-Thumbs.db
-.idea
-npm-debug.log
-compilation-stats.json
+.idea/
+.vscode/
