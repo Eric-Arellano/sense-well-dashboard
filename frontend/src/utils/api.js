@@ -2,7 +2,7 @@
 import axios from 'axios'
 
 export const getMetricSummaries = (community: string) => {
-  const api = `/api/metricSummaries/${community}`
+  const api = `/api/metric_summaries/${community}`
   return getRequest(api)
 }
 
