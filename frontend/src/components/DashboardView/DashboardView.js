@@ -1,8 +1,7 @@
 // @flow
 import React from 'react'
-import { WidgetGroup } from 'components'
+import { CommunityPanel, WidgetGroup } from 'components'
 import type { Community, MetricSummary } from 'flow/types'
-import CommunityPanel from '../Panel/CommunityPanel'
 
 type Props = {
   community: Community,
