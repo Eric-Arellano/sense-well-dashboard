@@ -1,0 +1,87 @@
+/* Widget */
+
+.container {
+    min-height: 180px;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.box {
+    background: #fff;
+    border: 1px solid black;
+    border-radius: 0.25rem;
+}
+
+
+/* Main Text (unit & current value) */
+
+.mainText {
+    display: block;
+    margin: -1px -1px 0;
+    line-height: 90px;
+    background: #e9ecef;
+    border-radius: 0.25rem 0.25rem 0 0;
+}
+
+.currentValue {
+    font-size: 3.5em;
+}
+
+.unit {
+    font-size: 1.5em;
+    padding-left: 0.5em;
+}
+
+.okayMainText {
+    composes: mainText;
+    color: #fff;
+    background: green;
+}
+
+.badMainText {
+    composes: mainText;
+    color: #fff;
+    background: red;
+}
+
+/* Threshold & average */
+
+.bottom ul {
+    padding: 10px 0;
+    list-style: none;
+}
+
+.bottom li {
+    display: block;
+    float: left;
+    width: 50%;
+}
+
+
+.bottom strong {
+    display: block;
+    font-size: 20px;
+}
+
+.bottom span {
+    font-size: 12px;
+    font-weight: bolder;
+    color: black;
+    text-transform: uppercase;
+}
+
+.average {
+    border-right: 1px solid black;
+}
+
+/* Last updated */
+
+.lastUpdated {
+    margin-top: 2em;
+    border-top: 1px solid black;
+}
+
+/* Metric name */
+.metricName {
+    padding-top: 0.2em;
+}

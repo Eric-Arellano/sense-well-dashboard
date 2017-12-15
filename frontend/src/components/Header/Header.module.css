@@ -1,0 +1,12 @@
+/* Header */
+
+.container {
+    background-color: #222;
+    padding: 1em;
+    margin-bottom: 2em;
+    color: white;
+}
+
+.title {
+    font-size: 1.5em;
+}

@@ -1,0 +1,23 @@
+/* App */
+
+.app {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-size: 120%;
+  font-family: sans-serif;
+}
+
+.body {
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1em;
+}
+
+@media screen and (max-width: 768px) {
+
+  .body {
+    font-size: 100%;
+  }
+}
