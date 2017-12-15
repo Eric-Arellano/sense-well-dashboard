@@ -1,5 +1,5 @@
 // @flow
-import type { MetricSummary, Community } from 'flow/types'
+import type { MetricSummary } from 'flow/types'
 
 export const mockCommunity = () => {
   return {

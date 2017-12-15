@@ -2,6 +2,7 @@
 import React from 'react'
 import { WidgetGroup } from 'components'
 import type { Community, MetricSummary } from 'flow/types'
+import CommunityPanel from '../Panel/CommunityPanel'
 
 type Props = {
   community: Community,
@@ -10,12 +11,10 @@ type Props = {
 
 const DashboardView = (props: Props) => {
   const {community, metricSummaries} = props
-  return (
-    <div>
-      <h1>{community.name}</h1>
-      <WidgetGroup metricSummaries={metricSummaries} />
-    </div>
-  )
+  return [
+    <CommunityPanel community={community} key={1} />,
+    <WidgetGroup metricSummaries={metricSummaries} key={2} />
+  ]
 }
 
 export default DashboardView
