@@ -4,12 +4,11 @@ from flask import Flask, request, send_from_directory, abort
 from .mock import mock_time_series
 
 app = Flask(__name__,
-            static_folder="../../frontend/build",
+            static_folder="../../frontend/build/static",
             template_folder="../../frontend/build")
 app.url_map.strict_slashes = False
 
 
-# TODO: get this to actually render. Likely an issue with not using Create-React-App
 @app.route('/')
 def render_react():
     return send_from_directory('../../frontend/build', 'index.html')
