@@ -1,5 +1,16 @@
 // @flow
-import type { MetricSummary } from 'flow/types'
+import type { MetricSummary, Community } from 'flow/types'
+
+export const mockCommunity = () => {
+  return {
+    name: "Wusuta Sakakyere",
+    latitude: 49.4814,
+    longitude: 39.1391,
+    size: 431,
+    installation: new Date(2010, 5, 14),
+    lastInspection: new Date(2017, 11, 11)
+  }
+}
 
 export const mockMetricSummaries = () => {
 

@@ -9,3 +9,12 @@ export type MetricSummary = {
   threshold: (number) => boolean,
   thresholdText: string
 }
+
+export type Community = {
+  name: string,
+  latitude: number,
+  longitude: number,
+  size: number,
+  installation: Date,
+  lastInspection: Date
+}

@@ -1,12 +1,12 @@
 // @flow
 import React, { Component } from 'react'
 import { DashboardView } from 'components'
-import type { MetricSummary } from '../../flow/types'
+import type { Community, MetricSummary } from '../../flow/types'
 import { getMetricSummaries } from '../../utils/api'
 import { mockMetricSummaries } from 'utils/mock'
 
 type Props = {
-  community: string
+  community: Community
 }
 
 type State = {
