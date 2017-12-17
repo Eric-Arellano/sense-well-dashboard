@@ -1,0 +1,36 @@
+/* Button */
+
+.base {
+    background: transparent;
+    border: 1px solid currentColor;
+    font-weight: 300;
+    font-size: 1.1em;
+    margin-top: 1em;
+    padding: 0.33em 1.33em;
+    transition: all 0.3s;
+}
+
+.base:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+.success {
+    composes: base;
+    color: green;
+}
+
+.success:hover {
+    color: white;
+    background: green
+}
+
+.danger {
+    composes: base;
+    color: red;
+}
+
+.danger:hover {
+    color: white;
+    background: red
+}

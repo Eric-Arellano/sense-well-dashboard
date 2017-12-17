@@ -1,4 +1,5 @@
 import App from './App/App'
+import Button from './Button/Button'
 import CommunityPanel from './DashboardView/CommunityPanel'
 import DashboardView from './DashboardView/DashboardView'
 import Entry from './Panel/Entry'
@@ -12,6 +13,7 @@ import WidgetGroup from './Widget/WidgetGroup'
 
 export {
   App,
+  Button,
   CommunityPanel,
   DashboardView,
   Entry,
