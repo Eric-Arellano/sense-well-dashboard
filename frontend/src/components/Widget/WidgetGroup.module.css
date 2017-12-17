@@ -1,8 +1,13 @@
 /* Widget group */
 
-.container {
-    display: grid;
-    grid-auto-rows: minmax(100px, 150px);
-    grid-template-columns: repeat(3, 300px);
-    grid-gap: 2em;
+.container {  }
+
+@media screen and (min-width: 768px) {
+
+    .container {
+        display: grid;
+        grid-auto-rows: minmax(100px, 150px);
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 2em;
+    }
 }
