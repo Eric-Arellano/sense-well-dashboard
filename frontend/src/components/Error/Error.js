@@ -7,14 +7,11 @@ type Props = {
   resetState: () => void,
 }
 
-const Error = (props: Props) => {
-  const {children, resetState} = props
-  return (
-    <div className={s.base}>
-      <p>{children}</p>
-      <Button handleClick={resetState}>Back</Button>
-    </div>
-  )
-}
+const Error = ({children, resetState}: Props) => (
+  <div className={s.base}>
+    <p>{children}</p>
+    <Button handleClick={resetState}>Back</Button>
+  </div>
+)
 
 export default Error

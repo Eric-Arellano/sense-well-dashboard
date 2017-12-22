@@ -5,36 +5,40 @@ import s from './Widget.module.css'
 
 type Props = {
   metricSummary: MetricSummary
-};
+}
 
-const Widget = (props: Props) => {
-  const {name, unit, currentValue, date, average, threshold, thresholdText } = props.metricSummary
-  const okay = threshold(currentValue) ? 'okayMainText' : 'badMainText';
-  const daysDiff = Math.round((new Date() - date)/(1000*60*60*24));
+const Widget = ({ name, unit, currentValue, date, average, threshold, thresholdText }: Props) => {
+  const daysDiff = Math.round((new Date() - date)/(1000*60*60*24))
   return (
-    <div className={s.container}>
-      <div className={s.box}>
-        <div className={s[okay]}>
-          <span className={s.currentValue}>{currentValue}</span>
-          <span className={s.unit}>{unit}</span>
-        </div>
-        <ul className={s.bottom}>
-          <li className={s.average}>
+    <li className={s.container}>
+      <header className={s.header}>
+        <h3 className={s.metricName}>{name}</h3>
+      </header>
+      <main className={s.main}>
+        <section className={s.mainStat} style={{ color: threshold(currentValue) ? 'green' : 'red' }}>
+          <span className={s.currentValue}>
+            {currentValue}
+          </span>
+          <span className={s.unit}>
+            {unit}
+          </span>
+        </section>
+        <section className={s.minorStatsContainer}>
+          <div className={s.minorStat}>
             <strong>{average}</strong>
-            <span>average</span>
-          </li>
-          <li>
+            <span>{'average'}</span>
+          </div>
+          <div className={s.minorStat}>
             <strong>{thresholdText}</strong>
-            <span>safe values</span>
-          </li>
-        </ul>
-        <div className={s.lastUpdated}>
-          <span>Last updated {daysDiff} days ago.</span>
-        </div>
-      </div>
-      <h3 className={s.metricName}>{name}</h3>
-    </div>
+            <span>{'safe values'}</span>
+          </div>
+        </section>
+        <footer className={s.footer}>
+          <span>{'Last updated '}<strong>{daysDiff}</strong>{' days ago.'}</span>
+        </footer>
+      </main>
+    </li>
   )
-};
+}
 
-export default Widget;
+export default Widget

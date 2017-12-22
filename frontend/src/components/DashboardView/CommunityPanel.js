@@ -9,8 +9,7 @@ type Props = {
   isError: boolean,
 }
 
-const CommunityPanel = (props: Props) => {
-  const {community, isLoading, isError} = props
+const CommunityPanel = ({community, isLoading, isError}: Props) => {
   const {name, latitude, longitude, size, installation, lastInspection} = community
   if (isLoading) {
     return <Loading />

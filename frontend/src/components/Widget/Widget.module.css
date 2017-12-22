@@ -1,87 +1,92 @@
 /* Widget */
 
 .container {
-    min-height: 180px;
-    margin-bottom: 1.5rem;
-    text-align: center;
-}
-
-.box {
+    margin: 1em;
+    flex: 1 1 calc(333px - 2em);
+    border: 1px solid #222;
     background: #fff;
-    border: 1px solid black;
-    border-radius: 0.25rem;
+    box-shadow: 0 7.5px 17.5px rgba(50,50,93,.1), 0 2.5px 7.5px rgba(0,0,0,.07);
+}
+.header {
+    border-bottom: 1px solid #222;
+}
+.header h3 {
+    margin: 0;
+    font-weight: 300;
+    padding: 0.4em 0;
+    text-transform: uppercase;
+    background: #222;
+    color: #fff;
 }
 
-
-/* Main Text (unit & current value) */
-
-.mainText {
-    display: block;
-    margin: -1px -1px 0;
-    line-height: 90px;
-    background: #e9ecef;
-    border-radius: 0.25rem 0.25rem 0 0;
+.main {
+    padding: 1em 0 0.5em;
 }
 
+.mainStat {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 300;
+}
 .currentValue {
     font-size: 3.5em;
 }
-
 .unit {
     font-size: 1.5em;
     padding-left: 0.5em;
 }
-
-.okayMainText {
-    composes: mainText;
-    color: #fff;
-    background: green;
+.minorStatsContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.minorStat {
+    margin: 0.75em 0;
+    padding: 0.75em 0;
+    flex: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-.badMainText {
-    composes: mainText;
-    color: #fff;
-    background: red;
-}
-
-/* Threshold & average */
-
-.bottom ul {
-    padding: 10px 0;
-    list-style: none;
-}
-
-.bottom li {
-    display: block;
-    float: left;
-    width: 50%;
-}
-
-
-.bottom strong {
-    display: block;
-    font-size: 20px;
-}
-
-.bottom span {
-    font-size: 12px;
-    font-weight: bolder;
-    color: black;
+.minorStat span {
+    color: #aaa;
     text-transform: uppercase;
+    font-size: 0.66em;
+    margin-top: 0.2em;
 }
 
-.average {
-    border-right: 1px solid black;
+.minorStat:first-child {
+    border-right: 1px solid #aaa;
 }
 
-/* Last updated */
-
-.lastUpdated {
-    margin-top: 2em;
-    border-top: 1px solid black;
+.minorStat::before, .minorStat::after {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 90%;
+    background: #aaa;
+    position: absolute;
 }
 
-/* Metric name */
-.metricName {
-    padding-top: 0.2em;
+.minorStat::before {
+    bottom: 0;
+}
+.minorStat::after {
+    top: 0;
+}
+
+.minorStat:first-child::before, .minorStat:first-child::after {
+    right: 0;
+}
+.minorStat:last-child::before, .minorStat:last-child::after {
+    left: 0;
+}
+
+.footer {
+    font-size: 0.66em;
+    font-weight: 100;
 }
