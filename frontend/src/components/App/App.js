@@ -9,14 +9,13 @@ type Props = {
   community: Community
 }
 
-const App = (props: Props) => {
-  const {community} = props
+const App = ({ community }: Props) => {
   return (
     <div className={s.app}>
       <Header />
-      <div className={s.body}>
+      <main className={s.body}>
         <DashboardViewContainer community={community} />
-      </div>
+      </main>
       <Footer />
     </div>
   )

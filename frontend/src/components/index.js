@@ -9,7 +9,6 @@ import Header from './Header/Header'
 import Loading from './Loading/Loading'
 import Panel from './Panel/Panel'
 import Widget from './Widget/Widget'
-import WidgetGroup from './Widget/WidgetGroup'
 
 export {
   App,
@@ -22,6 +21,5 @@ export {
   Header,
   Loading,
   Panel,
-  Widget,
-  WidgetGroup,
+  Widget
 }
