@@ -11,16 +11,13 @@ type Props = {
   disabled?: boolean
 }
 
-const Button = (props: Props) => {
-  const {children, handleClick, type, disabled} = props
-  return (
-    <button onClick={handleClick}
-            className={s[type]}
-            disabled={disabled}>
-      {children}
-    </button>
-  )
-}
+const Button = ({children, handleClick, type, disabled}: Props) => (
+  <button onClick={handleClick}
+          className={s[type]}
+          disabled={disabled}>
+    {children}
+  </button>
+)
 
 Button.defaultProps = {
   children: '',

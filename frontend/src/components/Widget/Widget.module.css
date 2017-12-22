@@ -1,8 +1,8 @@
 /* Widget */
 
 .container {
-    margin: 2.5%;
-    flex: 1 1 300px;
+    margin: 1em;
+    flex: 1 1 calc(333px - 2em);
     border: 1px solid #222;
     background: #fff;
     box-shadow: 0 7.5px 17.5px rgba(50,50,93,.1), 0 2.5px 7.5px rgba(0,0,0,.07);

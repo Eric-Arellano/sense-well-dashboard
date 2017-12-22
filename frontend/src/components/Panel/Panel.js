@@ -7,14 +7,11 @@ type Props = {
   header: string
 }
 
-const Panel = (props: Props) => {
-  const {children, header} = props
-  return (
-    <div className={s.container}>
-      <h3 className={s.header}>{header}</h3>
-      <div className={s.body}>{children}</div>
-    </div>
-  )
-}
+const Panel = ({children, header}: Props) => (
+  <div className={s.container}>
+    <h3 className={s.header}>{header}</h3>
+    <div className={s.body}>{children}</div>
+  </div>
+)
 
 export default Panel
