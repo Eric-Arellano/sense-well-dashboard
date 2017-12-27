@@ -22,8 +22,8 @@ const CommunityPanel = ({community, isLoading, isError}: Props) => {
       <Entry>Latitude: {latitude}</Entry>
       <Entry>Longitude: {longitude}</Entry>
       <Entry>Size of community: {size} people</Entry>
-      <Entry>Installation date: {installation.toString()}</Entry>
-      <Entry>Last inspection date: {lastInspection.toString()}</Entry>
+      <Entry>Installation date: {installation.toDateString()}</Entry>
+      <Entry>Last inspection date: {lastInspection.toDateString()}</Entry>
     </Panel>
   )
 }
