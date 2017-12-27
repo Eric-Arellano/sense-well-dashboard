@@ -9,11 +9,11 @@ type Props = {
   metricSummaries: Array<MetricSummary>
 }
 
-const DashboardView = ({ community, metricSummaries }: Props) => [
+const DashboardView = ({community, metricSummaries}: Props) => [
   <CommunityPanel community={community} key={1} />,
   <ul className={s.widgetsContainer} key={2}>
-    { metricSummaries.map((metric, index) => (
-      <Widget {...metric} key={index} />
+    {metricSummaries.map((metric, index) => (
+      <Widget metricSummary={metric} key={index} />
     ))}
   </ul>
 ]
