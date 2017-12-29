@@ -1,6 +1,6 @@
 // @flow
 import React from 'react'
-import { CommunityPanel, Widget } from 'components'
+import { Chart, CommunityPanel, Widget } from 'components'
 import type { Community, MetricSummary } from 'flow/types'
 import s from './DashboardView.module.css'
 
@@ -15,7 +15,8 @@ const DashboardView = ({community, metricSummaries}: Props) => [
     {metricSummaries.map((metric, index) => (
       <Widget metricSummary={metric} key={index} />
     ))}
-  </ul>
+  </ul>,
+  <Chart key={3} />
 ]
 
 export default DashboardView
