@@ -1,15 +1,16 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
+# Scala template
+*.class
+*.log
 
-# Distribution / packaging
-lib/
-bin/
-include/
-pyvenv.cfg
-pip-selfcheck.json
+# SBT template
+dist/*
+target/
+lib_managed/
+src_managed/
+project/boot/
+project/plugins/project/
+.history
+.cache
+.lib/
 
-# Flask stuff:
-instance/
-.webassets-cache
+.idea/
