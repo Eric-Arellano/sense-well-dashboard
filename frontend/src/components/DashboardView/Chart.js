@@ -31,8 +31,8 @@ const data = [
 ]
 
 const series = new TimeSeries({
-  name: 'hilo_rainfall',
-  columns: ['index', 'precip'],
+  name: 'series',
+  columns: ['index', 'value'],
   points: data.map(([d, value]) => [
     Index.getIndexString('1h', new Date(d)),
     value
@@ -46,10 +46,12 @@ const Chart = () => (
         <YAxis
           id="value"
           label="Water flow (L/hr)"
-          min={0} max={1.5}
-          width="60" />
+          min={series.min('value')} max={series.max('value')}
+          width="60"
+          type={"linear"}
+        />
         <Charts>
-          <BarChart axis="value" series={series} columns={['precip']} spacing={1} />
+          <BarChart axis="value" series={series} columns={['value']} spacing={1} />
         </Charts>
       </ChartRow>
     </ChartContainer>
