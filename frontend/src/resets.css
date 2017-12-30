@@ -1,0 +1,194 @@
+/* -------  resets  ------- */
+* {
+    margin: 0;
+    padding: 0
+}
+
+html, body {
+    height: 100%;
+    box-sizing: border-box
+}
+
+*, *::before, *::after {
+    box-sizing: inherit
+}
+
+img {
+    max-width: 100%
+}
+
+a {
+    color: inherit;
+    text-decoration: none
+}
+
+ul, menu {
+    list-style-type: none
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: inherit;
+    font-family: inherit;
+    font-weight: 300;
+    line-height: 1.1
+}
+
+h1 {
+    font-size: 2.041em
+}
+
+h2 {
+    font-size: 1.68em
+}
+
+h3 {
+    font-size: 1.383em
+}
+
+h4 {
+    font-size: 1.067em
+}
+
+h5 {
+    font-size: 0.823em
+}
+
+h6 {
+    font-size: 0.723em
+}
+
+p {
+    color: #444
+}
+
+strong {
+    font-weight: 700
+}
+
+figure {
+    text-align: center
+}
+
+figcaption {
+    font-size: 0.9em
+}
+
+table, hr {
+    border: 0
+}
+
+nav, menu {
+    letter-spacing: 0
+}
+
+sup {
+    font-size: 66%
+}
+
+input, textarea {
+    border: 0;
+    background: inherit;
+    font: inherit
+}
+
+textarea {
+    resize: none
+}
+
+input:focus, textarea:focus {
+    outline: 0
+}
+
+code {
+    padding: 0.2em 0;
+    font-size: 75%;
+    background-color: rgba(27, 31, 35, 0.05);
+    border-radius: 3px;
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+    white-space: nowrap
+}
+
+code::before, code::after {
+    letter-spacing: -0.2em;
+    content: '\00a0'
+}
+
+input[type='text']:disabled {
+    color: #aaa;
+    cursor: not-allowed
+}
+
+textarea {
+    padding: 1em
+}
+
+::-webkit-input-placeholder {
+    color: #070707;
+    opacity: 0.5;
+    transition: opacity 0.22s
+}
+
+:-moz-placeholder {
+    color: #070707;
+    opacity: 0.5;
+    transition: opacity 0.22s
+}
+
+::-moz-placeholder {
+    color: #070707;
+    opacity: 0.5;
+    transition: opacity 0.22s
+}
+
+:-ms-input-placeholder {
+    color: #070707;
+    opacity: 0.5;
+    transition: opacity 0.22s
+}
+
+:focus::-webkit-input-placeholder {
+    opacity: 0;
+    transition: opacity 0.22s
+}
+
+:focus:-moz-placeholder {
+    opacity: 0;
+    transition: opacity 0.22s
+}
+
+:focus::-moz-placeholder {
+    opacity: 0;
+    transition: opacity 0.22s
+}
+
+input[type='number']::-webkit-outer-spin-button, input[type='number']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0
+}
+
+input[type='number'] {
+    text-align: right;
+    -moz-appearance: textfield
+}
+
+/* -------  body  ------- */
+body {
+    color: #070707;
+    background: #f2f2f2;
+    min-width: 320px;
+    overflow: hidden;
+    font: 400 16px/1.45 -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    text-rendering: optimizeLegibility;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* -------  app  ------- */
+#root {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto
+}
+
+
