@@ -1,8 +1,7 @@
 // @flow
 import React from 'react'
-import { BarChart, ChartContainer, ChartRow, Charts, Resizable, YAxis } from 'react-timeseries-charts'
+import { BarChart, ChartContainer, ChartRow, Charts, Resizable, styler, YAxis } from 'react-timeseries-charts'
 import { Index, TimeSeries } from 'pondjs'
-import s from './Chart.module.css'
 
 const data = [
   ['2017-01-24 00:00', 0.01],
@@ -40,8 +39,12 @@ const series = new TimeSeries({
   ])
 })
 
+const style = styler([
+  {key: 'value', color: 'steelblue'}
+])
+
 const Chart = () => (
-  <Resizable className={s.container}>
+  <Resizable>
     <ChartContainer timeRange={series.range()} format="%b '%y">
       <ChartRow height="150">
         <YAxis
@@ -49,10 +52,10 @@ const Chart = () => (
           label="Water flow (L/hr)"
           min={series.min('value')} max={series.max('value')}
           width="60"
-          type={"linear"}
+          type={'linear'}
         />
         <Charts>
-          <BarChart axis="value" series={series} columns={['value']} spacing={1} />
+          <BarChart axis="value" series={series} columns={['value']} spacing={1} style={style} />
         </Charts>
       </ChartRow>
     </ChartContainer>
