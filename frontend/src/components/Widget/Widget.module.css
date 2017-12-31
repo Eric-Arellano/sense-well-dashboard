@@ -88,9 +88,12 @@
 }
 
 .chartContainer {
-    /*display: flex;*/
-    /*align-items: center;*/
-    /*justify-content: center;*/
+    /* display: flex;   TODO: this makes the chart disappear.
+     Possibly due to flex-wrap from DashboardView.widgetsContainer?
+     https://stackoverflow.com/questions/39861483/content-disappears-when-flex-item-wraps
+     */
+    align-items: center;
+    justify-content: center;
     padding: 1em 0;
 }
 

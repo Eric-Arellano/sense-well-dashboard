@@ -1,12 +1,6 @@
+/* DashboardView */
 
 .widgetsContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.chartsContainer {
   display: flex;
   align-items: center;
   justify-content: center;
