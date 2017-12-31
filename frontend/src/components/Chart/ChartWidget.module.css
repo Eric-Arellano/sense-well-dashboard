@@ -1,0 +1,23 @@
+/* ChartWidget */
+
+.container {
+    margin: 1em;
+    flex: 1 1 calc(333px - 2em);
+    border: 1px solid #222;
+    background: #fff;
+    box-shadow: 0 7.5px 17.5px rgba(50,50,93,.1), 0 2.5px 7.5px rgba(0,0,0,.07);
+}
+
+.header {
+    margin: 0;
+    padding: 0.3em 0;
+    text-transform: uppercase;
+    background: #222;
+    color: white;
+    font-weight: 300;
+}
+
+.body {
+    padding: 1em;
+    background: white;
+}

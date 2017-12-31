@@ -2,6 +2,7 @@
 import React from 'react'
 import { BarChart, ChartContainer, ChartRow, Charts, Resizable, YAxis } from 'react-timeseries-charts'
 import { Index, TimeSeries } from 'pondjs'
+import s from './Chart.module.css'
 
 const data = [
   ['2017-01-24 00:00', 0.01],
@@ -40,7 +41,7 @@ const series = new TimeSeries({
 })
 
 const Chart = () => (
-  <Resizable>
+  <Resizable className={s.container}>
     <ChartContainer timeRange={series.range()} format="%b '%y">
       <ChartRow height="150">
         <YAxis
