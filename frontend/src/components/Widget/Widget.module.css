@@ -7,6 +7,7 @@
     background: #fff;
     box-shadow: 0 7.5px 17.5px rgba(50,50,93,.1), 0 2.5px 7.5px rgba(0,0,0,.07);
 }
+
 .header {
     border-bottom: 1px solid #222;
 }
@@ -84,6 +85,13 @@
 }
 .minorStat:last-child::before, .minorStat:last-child::after {
     left: 0;
+}
+
+.chartContainer {
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*justify-content: center;*/
+    padding: 1em 0;
 }
 
 .footer {

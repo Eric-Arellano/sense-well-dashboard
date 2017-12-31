@@ -2,7 +2,6 @@ import App from './App/App'
 import Button from './Button/Button'
 import CommunityPanel from './DashboardView/CommunityPanel'
 import Chart from './Chart/Chart'
-import ChartWidget from './Chart/ChartWidget'
 import DashboardView from './DashboardView/DashboardView'
 import Entry from './Panel/Entry'
 import Error from './Error/Error'
@@ -17,7 +16,6 @@ export {
   Button,
   CommunityPanel,
   Chart,
-  ChartWidget,
   DashboardView,
   Entry,
   Error,

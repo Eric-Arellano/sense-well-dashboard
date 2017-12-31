@@ -1,6 +1,7 @@
 // @flow
 import React from 'react'
 import type { MetricSummary } from 'flow/types'
+import { Chart } from 'components'
 import s from './Widget.module.css'
 
 type Props = {
@@ -32,6 +33,9 @@ const Widget = ({metricSummary: {name, unit, currentValue, date, average, thresh
             <strong>{thresholdText}</strong>
             <span>{'safe values'}</span>
           </div>
+        </section>
+        <section className={s.chartContainer}>
+          <Chart />
         </section>
         <footer className={s.footer}>
           <span>{'Last updated '}<strong>{daysDiff}</strong>{' days ago.'}</span>
