@@ -1,19 +1,19 @@
 // @flow
 import React from 'react'
 import { CommunityPanel, Widget } from 'components'
-import type { Community, MetricSummary } from 'flow/types'
+import type { Community, Metric } from 'flow/types'
 import s from './DashboardView.module.css'
 
 type Props = {
   community: Community,
-  metricSummaries: Array<MetricSummary>
+  metrics: Array<Metric>
 }
 
-const DashboardView = ({community, metricSummaries}: Props) => [
+const DashboardView = ({community, metrics}: Props) => [
   <CommunityPanel community={community} key={1} />,
   <ul className={s.widgetsContainer} key={2}>
-    {metricSummaries.map((metric, index) => (
-      <Widget metricSummary={metric} key={index} />
+    {metrics.map((metric, index) => (
+      <Widget metric={metric} key={index} />
     ))}
   </ul>
 ]

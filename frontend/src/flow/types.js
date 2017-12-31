@@ -1,9 +1,10 @@
 // @flow
 
-export type MetricSummary = {
+export type Metric = {
   name: string,
   unit: string,
   currentValue: number,
+  datapoints: Timeseries,
   date: Date,
   average: number,
   threshold: (number) => boolean,
@@ -18,3 +19,5 @@ export type Community = {
   installation: Date,
   lastInspection: Date
 }
+
+export type Timeseries = Array<[string, number]>

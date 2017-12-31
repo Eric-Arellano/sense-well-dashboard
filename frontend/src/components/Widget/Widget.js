@@ -1,14 +1,14 @@
 // @flow
 import React from 'react'
-import type { MetricSummary } from 'flow/types'
+import type { Metric } from 'flow/types'
 import { Chart } from 'components'
 import s from './Widget.module.css'
 
 type Props = {
-  metricSummary: MetricSummary
+  metric: Metric
 }
 
-const Widget = ({metricSummary: {name, unit, currentValue, date, average, threshold, thresholdText}}: Props) => {
+const Widget = ({metric: {name, unit, currentValue, date, average, threshold, thresholdText, datapoints}}: Props) => {
   const daysDiff = Math.round((new Date() - date) / (1000 * 60 * 60 * 24))
   return (
     <li className={s.container}>
@@ -35,7 +35,7 @@ const Widget = ({metricSummary: {name, unit, currentValue, date, average, thresh
           </div>
         </section>
         <section className={s.chartContainer}>
-          <Chart />
+          <Chart label={`${name} (${unit})`} datapoints={datapoints} />
         </section>
         <footer className={s.footer}>
           <span>{'Last updated '}<strong>{daysDiff}</strong>{' days ago.'}</span>

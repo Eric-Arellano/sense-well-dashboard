@@ -1,9 +1,9 @@
 // @flow
 import React, { Component } from 'react'
 import { DashboardView } from 'components'
-import type { Community, MetricSummary } from 'flow/types'
+import type { Community, Metric } from 'flow/types'
 import { getMetricSummaries } from 'utils/api'
-import { mockMetricSummaries } from 'utils/mock'
+import { mockMetrics } from 'utils/mock'
 import { withLoadingAndError } from 'decorators'
 
 type Props = {
@@ -13,7 +13,7 @@ type Props = {
 type State = {
   isLoading: boolean,
   isError: boolean,
-  metricSummaries: Array<MetricSummary>
+  metrics: Array<Metric>
 }
 
 class DashboardViewContainer extends Component<Props, State> {
@@ -21,7 +21,7 @@ class DashboardViewContainer extends Component<Props, State> {
   state = {
     isLoading: true,
     isError: false,
-    metricSummaries: []
+    metrics: []
   }
 
   componentDidMount () {
@@ -29,13 +29,13 @@ class DashboardViewContainer extends Component<Props, State> {
     getMetricSummaries(community.name)
       .then((data) => {
         this.setState({
-          metricSummaries: data.metricSummaries,
+          metrics: data.metrics,
           isLoading: false,
         })
       })
       .catch((error) => {
         this.setState({
-          metricSummaries: mockMetricSummaries(), // TODO: just for demo
+          metrics: mockMetrics(), // TODO: just for demo
           isLoading: false,
           isError: false // TODO: just for demo
         })
@@ -44,7 +44,7 @@ class DashboardViewContainer extends Component<Props, State> {
 
   resetState = () => {
     this.setState({
-      metricSummaries: [],
+      metrics: [],
       isLoading: true,
       isError: false
     })
