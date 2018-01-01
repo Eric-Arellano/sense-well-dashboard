@@ -1,5 +1,5 @@
 CREATE TABLE daily_conditions (
-  date            DATE                                    NOT NULL,
+  day             DATE                                    NOT NULL,
   community_id    INT REFERENCES community (community_id) NOT NULL,
   flow_count      INT                                     NOT NULL,
   flow_sum        DOUBLE PRECISION,
@@ -7,7 +7,7 @@ CREATE TABLE daily_conditions (
   salinity_sum    DOUBLE PRECISION,
   turbidity_count INT                                     NOT NULL,
   turbidity_sum   DOUBLE PRECISION,
-  PRIMARY KEY (date, community_id)
+  PRIMARY KEY (day, community_id)
 );
 
 SELECT create_hypertable('daily_conditions', 'time');
