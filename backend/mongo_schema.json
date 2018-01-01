@@ -1,0 +1,10 @@
+{
+  "timestamp_day": ISODate(“2013-10-10T23:06:00.000Z”),
+  "community_name": "Wusuta Sakakyere",
+  "water_flow_num_samples": 25,
+  "water_flow_sum": 74013,
+  "turbidity_num_samples": 3,
+  "turbidity_sum": 856.4,
+  "salinity_num_samples": 2,
+  "salinity_sum": 74.1
+}
