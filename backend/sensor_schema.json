@@ -1,60 +1,58 @@
 {
   "messageId": "050bcb31-a6c0-442d-ad5b-f7a5911e1de5",
-  "body": [
-    {
-      "community_name": "wusuta_sakakyere",
-      "datapoints": [
-        {
-          "timestamp": 1514833341,
-          "flow": 37.2,
-          "salinity": 19.23,
-          "turbidity": 0.5476
-        },
-        {
-          "timestamp": 1514836941,
-          "flow": 29.9
-        },
-        {
-          "timestamp": 1514840541,
-          "flow": 46
-        },
-        {
-          "timestamp": 1514844141,
-          "flow": 35
-        },
-        {
-          "timestamp": 1514847741,
-          "flow": 27.7
-        },
-        {
-          "timestamp": 1514851341,
-          "flow": 27.6
-        },
-        {
-          "timestamp": 1514854941,
-          "flow": 31.2,
-          "salinity": 18.47,
-          "turbidity": 1.0204
-        },
-        {
-          "timestamp": 1514858541,
-          "flow": 28.6
-        },
-        {
-          "timestamp": 1514862141,
-          "flow": 37
-        },
-        {
-          "timestamp": 1514865741,
-          "flow": 40.6
-        },
-        {
-          "timestamp": 1514869341,
-          "flow": 27.5,
-          "salinity": 15.64,
-          "turbidity": 1.6351
-        }
-      ]
-    }
-  ]
+  "body": {
+    "community_name": "wusuta_sakakyere",
+    "datapoints": [
+      {
+        "timestamp": 1514833341,
+        "flow": 37.2,
+        "salinity": 19.23,
+        "turbidity": 0.5476
+      },
+      {
+        "timestamp": 1514836941,
+        "flow": 29.9
+      },
+      {
+        "timestamp": 1514840541,
+        "flow": 46
+      },
+      {
+        "timestamp": 1514844141,
+        "flow": 35
+      },
+      {
+        "timestamp": 1514847741,
+        "flow": 27.7
+      },
+      {
+        "timestamp": 1514851341,
+        "flow": 27.6
+      },
+      {
+        "timestamp": 1514854941,
+        "flow": 31.2,
+        "salinity": 18.47,
+        "turbidity": 1.0204
+      },
+      {
+        "timestamp": 1514858541,
+        "flow": 28.6
+      },
+      {
+        "timestamp": 1514862141,
+        "flow": 37
+      },
+      {
+        "timestamp": 1514865741,
+        "flow": 40.6
+      },
+      {
+        "timestamp": 1514869341,
+        "flow": 27.5,
+        "salinity": 15.64,
+        "turbidity": 1.6351
+      }
+    ]
+  }
 }
