@@ -21,6 +21,7 @@ def api_test():
 
 @app.route('/api/metric_summaries/<string:community>')
 def metric_summaries(community: str):
+    # TODO: get from tables flow, salinity, and turbidity
     pass
 
 
@@ -32,8 +33,12 @@ def time_series(community: str):
 
 @app.route('/api/time_series/', methods=['POST'])
 def time_series_post():
-    result = request.form['name'] + request.form['date'] + request.form['time_series']
-    return result
+    community_name = request.form['body']['community_name']
+    datapoints = request.form['body']['datapoints']
+    # TODO: parse datapoints, including into each logical day
+    # TODO: submit datapoints as row associated with that community and day
+    # TODO: also update running averages and current value for metric summaries
+    return community_name + datapoints
 
 
 def return_json(result):
