@@ -13,3 +13,7 @@ pip-selfcheck.json
 # Flask stuff:
 instance/
 .webassets-cache
+
+# Testing
+.mypy_cache
+.coverage

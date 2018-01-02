@@ -33,19 +33,20 @@ run_backend() {
 
 test_backend() {
   cd backend/
-  python -m unittest
+  python -m unittest discover -s tests
   cd ../
 }
 
 check_backend_types() {
   cd backend/
-  mypy --strict-optional --package src
+  mypy --strict-optional --ignore-missing-imports --package src
   cd ../
 }
 
 check_test_coverage() {
   cd backend/
-  mypy --strict-optional --package src
+  coverage run --source=./src -m unittest discover -s tests
+  coverage report
   cd ../
 }
 
