@@ -59,6 +59,24 @@ React & Flask app to visualize sensor data for clean water wells to detect when 
 ##### To check type hints
 `./run-frontend.sh types`
 
+## To simulate sending sensor data
+
+#### Requirements
+1. Make sure you can get the backend server working (see guides on 'To Install' and 'To Run')
+1. [Download the app Postman](https://www.getpostman.com/)
+
+#### Steps
+1. Start the Flask backend server with `./run-backend.sh`
+1. Open up the app Postman
+1. Start a new "Request" and give whatever name you'd like
+1. Change the method to `POST` in the top middle-left corner
+1. Under `body`, change to `raw` and then on the orange text that appears to the right select `JSON (application/json)`
+1. Paste the JSON values into the `body` field. You can just copy and paste [this example](https://raw.githubusercontent.com/Eric-Arellano/sense-well-dashboard/master/backend/sensor_schema.json).
+1. Click `send`. 
+1. At the bottom of the screen, you should get a report with the community name and daily averages. Otherwise, there 
+was an error and you should check the console running the Flask server for the error message.
+
+
 ## Dependency management
 
 ### Backend
