@@ -1,8 +1,8 @@
 import json
 
 from flask import Flask, request, send_from_directory, abort
-from .mock import mock_time_series
-import mypackage.mock
+
+from src.mock import mock_time_series
 
 app = Flask(__name__,
             static_folder="../../frontend/build/static",
