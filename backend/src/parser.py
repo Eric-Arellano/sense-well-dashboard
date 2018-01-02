@@ -11,7 +11,8 @@ def parse_datapoint_set(datapoints: List[Datapoint]) -> List[DailyConditions]:
     data_frame = _convert_to_pandas(datapoints)
     grouped = _group_by_day(data_frame)
     aggregated = _get_count_and_sum_per_day(grouped)
-    return _parse_into_daily_conditions(aggregated)
+    sorted_ = _round_and_sort(aggregated)
+    return _parse_into_daily_conditions(sorted_)
 
 
 def _convert_to_pandas(datapoints: List[Datapoint]) -> pandas.DataFrame:
@@ -29,8 +30,11 @@ def _get_count_and_sum_per_day(groups) -> pandas.DataFrame:
     count.columns = ['flow_count', 'salinity_count', 'turbidity_count']
     sum_ = groups.sum()
     sum_.columns = ['flow_sum', 'salinity_sum', 'turbidity_sum']
-    join = count.join(sum_, how='outer')
-    sorted_ = join.sort_index(axis=1)
+    return count.join(sum_, how='outer')
+
+
+def _round_and_sort(aggregated: pandas.DataFrame) -> pandas.DataFrame:
+    sorted_ = aggregated.sort_index(axis=1)
     rounded = sorted_.round({'flow_sum': 2, 'salinity_sum': 2, 'turbidity_sum': 4})
     rounded['flow_count'] = rounded['flow_count'].apply(numpy.int)  # TODO: doesn't actually make int
     rounded['salinity_count'] = rounded['salinity_count'].apply(numpy.int)
