@@ -1,6 +1,7 @@
 from typing import List, Dict
 
 import pandas
+import numpy
 
 Datapoint = Dict[str, float]
 DailyConditions = Dict[str, float]
@@ -29,7 +30,12 @@ def _get_count_and_sum_per_day(groups) -> pandas.DataFrame:
     sum_ = groups.sum()
     sum_.columns = ['flow_sum', 'salinity_sum', 'turbidity_sum']
     join = count.join(sum_, how='outer')
-    return join.sort_index(axis=1)  # sort column names alphabetically
+    sorted_ = join.sort_index(axis=1)
+    rounded = sorted_.round({'flow_sum': 2, 'salinity_sum': 2, 'turbidity_sum': 4})
+    rounded['flow_count'] = rounded['flow_count'].apply(numpy.int)  # TODO: doesn't actually make int
+    rounded['salinity_count'] = rounded['salinity_count'].apply(numpy.int)
+    rounded['turbidity_count'] = rounded['turbidity_count'].apply(numpy.int)
+    return rounded
 
 
 def _parse_into_daily_conditions(aggregated: pandas.DataFrame) -> List[DailyConditions]:
