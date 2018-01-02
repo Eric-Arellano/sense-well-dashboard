@@ -1,9 +1,11 @@
 import json
+from textwrap import dedent
+from typing import List
 
 from flask import Flask, request, send_from_directory, abort
 
-from src.mock import mock_time_series
 from src import parser
+from src.mock import mock_time_series
 
 app = Flask(__name__,
             static_folder="../../frontend/build/static",
@@ -38,11 +40,23 @@ def time_series_post():
     req_data = request.get_json()
     community_name = req_data['body']['community_name']
     datapoints = req_data['body']['datapoints']
-    # day_aggregates = parser.parse_datapoint_set(datapoints)
+    day_aggregates = parser.parse_datapoint_set(datapoints)
     # TODO: submit datapoints as row associated with that community and day
     # TODO: also update running averages and current value for metric summaries
-    # return community_name + datapoints
-    return community_name
+    return _generate_report(community_name, day_aggregates)
+
+
+def _generate_report(community_name: str, day_aggregates: List[parser.DailyConditions]) -> str:
+    report = dedent(f'''
+    {community_name}
+    ----------------------------
+    ''')
+    for day in day_aggregates:
+        report += dedent(f'''
+        flow average for {day['day']}: {day['flow_sum'] / day['flow_count']}
+        salinity average for {day['day']}: {day['salinity_sum'] / day['salinity_count']}
+        turbidity average for {day['day']}: {day['turbidity_sum'] / day['turbidity_count']}\n''')
+    return dedent(report)
 
 
 def return_json(result):

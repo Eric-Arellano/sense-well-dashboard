@@ -33,9 +33,19 @@ def _get_count_and_sum_per_day(groups) -> pandas.DataFrame:
 
 
 def _parse_into_daily_conditions(aggregated: pandas.DataFrame) -> List[DailyConditions]:
-    r = aggregated.to_dict(orient='index')
-    print(r)
-    r2 = dict((key.date(), value) for (key, value) in r)
-    print(r2)
-    raise NotImplementedError('Figure out how to convert to List of Dicts, with keys "day", "x_count", and "x_sum"')
-    # return [{'day': d, 'flow_count': d['flow_count']} for d in r]
+    results = aggregated.to_dict(orient='index')
+    day_indexes = list(results)
+    daily_conditions: List[DailyConditions] = []
+    for day in day_indexes:
+        day_values = results[day]
+        daily_condition = {'day': day.date(),
+                           'flow_count': day_values['flow_count'],
+                           'flow_sum': day_values['flow_sum'],
+                           'turbidity_count': day_values['turbidity_count'],
+                           'turbidity_sum': day_values['turbidity_sum'],
+                           'salinity_count': day_values['salinity_count'],
+                           'salinity_sum': day_values['salinity_sum'],
+                           }
+        daily_conditions.append(daily_condition)
+    return daily_conditions
+
