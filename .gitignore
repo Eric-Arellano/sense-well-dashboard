@@ -1,3 +1,9 @@
 .DS_Store
 .idea/
 .vscode/
+*.bak
+
+# Python
+**/__pycache__/
+.mypy_cache
+
