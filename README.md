@@ -27,92 +27,48 @@ for further context on how to get this project working effectively on a PC.
 1. Yarn, installer from https://yarnpkg.com/en/docs/install
 1. Heroku, 64 bit installer from https://devcenter.heroku.com/articles/heroku-cli
     1. Accept defaults
+    
+### Running commands on PC
+Use Git Bash instead of Command Prompt, because Git Bash offers Unix-style tools.
 
-## To install
-#### Backend
-1. `cd backend/`
-1. Make a virtual environment:
-    1. Mac: `python3 -m venv ./`
-    1. Windows: `python -m venv ./`
-1. `cd ../`
-1. activate virtual environment:
-    1. On Mac, `source backend/bin/activate`
-    1. On Windows, `backend\Scripts\activate.bat`
-1. install dependencies: `pip install -r requirements.txt`
+Due to issues with the way Python is installed on PCs, the normal command method of `./run.py` won't work. Instead,
+*every time you see `./run.py`, replace it with`py run.py`*.
 
-#### Frontend
-1. `cd frontend/`
-1. `yarn install`
+## Basic Usage
+1. `./run.py install`, installs all the libraries
+1. `./run.py`, starts the app at `localhost:3000` (go to this in your browser)
+1. `./run.py stop`, stops the app
 
-## To run
+## Advanced Usage
+There are many different ways to run this application, such as only starting the backend server or only starting the frontend server.
 
-### Backend
-`./run-backend.sh`
+#### Understanding the below syntax
+You will encounter these symbols:
+* `a|b` = a or b. You must choose one.
+* `[a]` = a is optional. You can add it as an argument if you'd like, otherwise the defaults will be used. 
 
-### Frontend
-`./run-frontend.sh`
+#### Targeting environment
+Most of these commands default to running on every possible environment (scripts, backend, and frontend). 
+You can often specify a specific target with `--target [env]`, or the abbreviation `-t [env]`.
 
-##### To build (rendered by backend)
-`./run-frontend.sh build`
+### Install
+`./run.py install [--target backend|frontend]`
 
-## To test
+### Run
+* Start app: `./run.py [--target backend|frontend]`
+* Stop app: `./run.py stop [--target backend|frontend]`
 
-### Backend
-`./run-backend.sh test`
+### Test
+* Run unit tests: `./run.py test [--target backend|script]`
+* Check types: `./run.py types [--target backend|frontend|script]`
 
-##### To check type hints
-`./run-backend.sh types`
+### Deploy
+`./run.py deploy`
 
-##### To check type coverage
-`./run-backend.sh coverage`
-
-### Frontend
-
-##### To check type hints
-`./run-frontend.sh types`
-
-## To simulate sending sensor data
-
-#### Requirements
-1. Make sure you can get the backend server working (see guides on 'To Install' and 'To Run')
-1. [Download the app Postman](https://www.getpostman.com/)
-
-#### Steps
-1. Start the Flask backend server with `./run-backend.sh`
-1. Open up the app Postman
-1. Start a new "Request" and give whatever name you'd like
-1. Change the method to `POST` in the top middle-left corner
-1. Under `body`, change to `raw` and then on the orange text that appears to the right select `JSON (application/json)`
-1. Paste the JSON values into the `body` field. You can just copy and paste [this example](https://raw.githubusercontent.com/Eric-Arellano/sense-well-dashboard/master/backend/sensor_schema.json).
-1. Click `send`. 
-1. At the bottom of the screen, you should get a report with the community name and daily averages. Otherwise, there 
-was an error and you should check the console running the Flask server for the error message.
-
-
-## Dependency management
-
-### Backend
-
-##### See out of date dependencies
-`pip list --outdated --format=columns`
-
-##### Dependency tree
-`pipdeptree`
-
-##### Upgrade dependency
-`pip install --upgrade <name>`
-
-##### Update requirements.txt
-1. Before making any changes, first delete everything with `pip freeze | xargs pip uninstall -y`. This is to make sure
-there aren't outdated dependencies that you might inadvertently add.
-1. `pip install -r requirements.txt`
-1. Make whatever upgrades you want
-1. `pip freeze > requirements.txt`
-
-### Frontend
-1. To add a new package:
-    1. `cd frontend/`
-    1. `yarn add <x>`
-1. To remove a package:
-    1. `cd frontend/`
-    1. `yarn remove <x>`
+### Dependency management
+* Catchup from changes made by others: `./run.py catchup [--target backend|frontend]`
+* View outdated dependencies: `./run.py outdated [--target backend|frontend]`
+* View dependency tree: `./run.py deptree [--target backend]` (not supported on frontend)
+* Add package(s): `./run.py add package1 [package2...] --target backend|frontend`
+* Upgrade package(s): `./run.py upgrade package1 [package2...] --target backend|frontend`
+* Remove package(s): `./run.py remove package1 [package2...] --target backend|frontend`
