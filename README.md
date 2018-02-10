@@ -39,7 +39,12 @@ Due to issues with the way Python is installed on PCs, the normal command method
 *every time you see `./run.py`, replace it with`py run.py`*.
 
 ## Basic Usage
-1. `./run.py install`, installs all the libraries
+
+#### First time setup
+`./run.py install`
+
+#### Run app
+1. `./run.py catchup`, checks for changes from the server
 1. `./run.py`, starts the app at `localhost:3000` (go to this in your browser)
 1. `./run.py stop`, stops the app
 
@@ -71,7 +76,9 @@ Most of these commands default to running on every possible environment (scripts
 You can often specify a specific target with `--target [env]`, or the abbreviation `-t [env]`.
 
 ### Install
-`./run.py install [--target backend|frontend]`
+* first-time setup: `./run.py install [--target backend|frontend]`
+* reinstall: `./run.py reinstall [--target backend|frontend]`
+* catchup from server changes: `./run.py catchup [--target backend|frontend]`
 
 ### Run
 * Start app: `./run.py [--target backend|frontend]`
@@ -85,7 +92,6 @@ You can often specify a specific target with `--target [env]`, or the abbreviati
 `./run.py deploy`
 
 ### Dependency management
-* Catchup from changes made by others: `./run.py catchup [--target backend|frontend]`
 * View outdated dependencies: `./run.py outdated [--target backend|frontend]`
 * View dependency tree: `./run.py deptree [--target backend]` (not supported on frontend)
 * Add package(s): `./run.py add package1 [package2...] --target backend|frontend`

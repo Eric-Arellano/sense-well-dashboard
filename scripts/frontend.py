@@ -11,10 +11,10 @@ Usage:
     install...
             install: `./frontend.py install`
             build: `./frontend.py build`
+            catchup: `./frontend.py catchup`
     test...
             check types: `./frontend.py types`
     dependency management...
-            catchup: `./frontend.py catchup`
             view outdated: `./frontend.py outdated`
             add: `./frontend.py add [package(s)]`
             upgrade: `./frontend.py upgrade [package(s)]`
@@ -27,7 +27,7 @@ from typing import List
 
 # path hack, https://chrisyeh96.github.io/2017/08/08/definitive-guide-python-imports.html
 sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
-from scripts.utils import prereq_checker, process_management, git, command_line_args, sys_calls
+from scripts.utils import prereq_checker, process_management, git, command_line_args, sys_calls, files
 
 
 def main() -> None:
@@ -50,6 +50,7 @@ def check_prereqs_installed() -> None:
     git.check_prereqs_installed()
     process_management.check_prereqs_installed()
     sys_calls.check_prereqs_installed()
+    files.check_prereqs_installed()
 
 
 # -------------------------------------
@@ -96,11 +97,32 @@ def install() -> None:
     sys_calls.run(["yarn", "install"], cwd='frontend/')
 
 
+def reinstall() -> None:
+    """
+    Deletes original packages and re-installs everything.
+    """
+    files.remove(['frontend/node_modules/'])
+    install()
+
+
 def build() -> None:
     """
     Builds frontend into two minified files, allowing the backend to render frontend.
     """
     sys_calls.run(["yarn", "build"], cwd='frontend/')
+
+
+def catchup() -> None:
+    """
+    Check server for changes, and install new dependencies if necessary.
+    """
+    if not git.is_clean_local():
+        raise SystemExit('Must first commit your changes before catching up.')
+    old_hash = git.get_file_hash('frontend/package.json')
+    git.fast_forward('origin', git.get_current_branch())
+    new_hash = git.get_file_hash('frontend/package.json')
+    if old_hash != new_hash:
+        sys_calls.run(["yarn", "install"])
 
 
 # -------------------------------------
@@ -115,18 +137,9 @@ def check_types() -> None:
 
 
 # -------------------------------------
-# Test commands
+# Dependency management
 # -------------------------------------
 Dependency = str  # type alias
-
-
-def catchup() -> None:
-    """
-    Check if any new npm dependencies added from others remotely, and then install them if so.
-    """
-    # TODO: pull from master
-    # TODO: actually check for differences in package.json
-    sys_calls.run(["yarn", "install"], cwd='frontend/')
 
 
 def list_outdated() -> None:
@@ -167,9 +180,10 @@ command_map = command_line_args.CommandMap({'run': run,
                                             'detached': run_detached,
                                             'stop': stop,
                                             'install': install,
+                                            'reinstall': reinstall,
+                                            'catchup': catchup,
                                             'build': build,
                                             'types': check_types,
-                                            'catchup': catchup,
                                             'outdated': list_outdated,
                                             'add': add,
                                             'upgrade': upgrade,

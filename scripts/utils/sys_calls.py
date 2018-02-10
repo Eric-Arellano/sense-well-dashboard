@@ -29,6 +29,16 @@ def is_windows_environment() -> bool:
     return os.name == 'nt'
 
 
+def determine_python_executable() -> str:
+    """
+    Get name of python executable depending on system.
+    """
+    if is_windows_environment():
+        return 'python'
+    else:
+        return 'python3'
+
+
 Command = Union[List[str], str]
 
 
@@ -52,7 +62,8 @@ def run(command: List[str], **kwargs) -> subprocess.CompletedProcess:
     Calls subprocess.run() and allows seamless support of both Windows and Unix.
     """
     new_command, new_kwargs = _modify_for_windows(command, kwargs)
-    return subprocess.run(new_command, **new_kwargs)
+    return subprocess.run(new_command,
+                          **new_kwargs)
 
 
 def run_detached(command: List[str], **kwargs) -> None:
@@ -73,6 +84,16 @@ def run_as_shell(command: str, **kwargs) -> subprocess.CompletedProcess:
     return subprocess.run(command,
                           shell=True,
                           **kwargs)
+
+
+def run_python(command: List[str], **kwargs) -> subprocess.CompletedProcess:
+    """
+    Run the command using Python executable.
+    """
+    python = determine_python_executable()
+    new_command, new_kwargs = _modify_for_windows([python] + command, kwargs)
+    return subprocess.run(new_command,
+                          **new_kwargs)
 
 
 # -----------------------------------------------------------------
@@ -99,26 +120,3 @@ def get_stdout_as_shell(command: str, **kwargs) -> str:
                           stdout=subprocess.PIPE,
                           encoding='utf-8',
                           **kwargs).stdout.strip()
-
-
-# -----------------------------------------------------------------
-# Source file
-# -----------------------------------------------------------------
-
-def source_file(*, file: str, path: str) -> None:
-    """
-    Mirrors the source command by adding values to local environment.
-
-    See https://stackoverflow.com/questions/3503719/emulating-bash-source-in-python
-    """
-    if is_windows_environment():
-        command = ['cmd', '/C', f'{file} && set']
-    else:
-        command = ['bash', '-c', f'source {file} && env']
-    process = subprocess.Popen(command,
-                               stdout=subprocess.PIPE,
-                               cwd=path)
-    for line in process.stdout:
-        (key, _, value) = line.decode("utf-8").strip().partition("=")
-        os.environ[key] = value
-    process.communicate()

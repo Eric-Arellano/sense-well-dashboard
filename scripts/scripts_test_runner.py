@@ -15,7 +15,7 @@ import sys
 # path hack, https://chrisyeh96.github.io/2017/08/08/definitive-guide-python-imports.html
 sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 
-from scripts.utils import prereq_checker, venv, sys_calls, command_line_args
+from scripts.utils import venv, sys_calls, command_line_args
 
 
 def main() -> None:
@@ -33,8 +33,6 @@ def check_prereqs_installed() -> None:
     """
     Confirms all required software installed.
     """
-    prereq_checker.check_is_installed(['python3'], windows_support=False)
-    prereq_checker.check_is_installed(['python'], posix_support=False)
     command_line_args.check_prereqs_installed()
     sys_calls.check_prereqs_installed()
     venv.check_prereqs_installed()
@@ -57,11 +55,7 @@ def test() -> None:
     """
     Run unit tests.
     """
-    if sys_calls.is_windows_environment():
-        py = 'python'
-    else:
-        py = 'python3'
-    sys_calls.run([py, '-m', 'unittest', 'discover', 'scripts/tests'])
+    sys_calls.run_python(['-m', 'unittest', 'discover', 'scripts/tests'])
 
 
 # -------------------------------------

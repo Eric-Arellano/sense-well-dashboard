@@ -10,11 +10,11 @@ Usage:
             stop detached: `backend.py stop`
     install...
             install: `./backend.py install`
+            reinstall: `./backend.py reinstall`
+            catchup: `./backend.py catchup`
     test...
-            unit tests: `./backend.py test`
             check types: `./backend.py types`
     dependency management...
-            catchup: `./backend.py catchup`
             view outdated: `./backend.py outdated`
             view dependency tree: `./backend.py deptree`
             add: `./backend.py add [package(s)]`
@@ -103,7 +103,30 @@ def install() -> None:
     """
     venv.create()
     venv.activate()
+    sys_calls.run(["pip", "install", "--upgrade", 'pip', 'setuptools'])
     sys_calls.run(["pip", "install", "-r", "requirements.txt"])
+
+
+def reinstall() -> None:
+    """
+    Deletes original virtual environment and re-installs everything.
+    """
+    venv.remove()
+    install()
+
+
+def catchup() -> None:
+    """
+    Check server for changes, and install new dependencies if necessary.
+    """
+    if not git.is_clean_local():
+        raise SystemExit('Must first commit your changes before catching up.')
+    old_hash = git.get_file_hash('requirements.txt')
+    git.fast_forward('origin', git.get_current_branch())
+    new_hash = git.get_file_hash('requirements.txt')
+    if old_hash != new_hash:
+        venv.activate()
+        sys_calls.run(["pip", "install", "-r", "requirements.txt"])
 
 
 # -------------------------------------
@@ -146,16 +169,6 @@ def _freeze_requirements() -> None:
     git.remind_to_commit("requirements.txt")
 
 
-def catchup() -> None:
-    """
-    Check if any new pip dependencies added from others remotely, and then install them if so.
-    """
-    # TODO: pull from master
-    # TODO: actually check for differences in requirements.txt
-    venv.activate()
-    sys_calls.run(["pip", "install", "-r", "requirements.txt"])
-
-
 def list_outdated() -> None:
     """
     List pip packages that should be updated.
@@ -195,7 +208,7 @@ def remove(dependencies: List[Dependency]) -> None:
     Remove one or more pip packages.
     """
     venv.activate()
-    sys_calls.run(["pip", "uninstall"] + dependencies)
+    sys_calls.run(["pip-autoremove"] + dependencies + ['-y'])
     _freeze_requirements()
 
 
@@ -206,9 +219,10 @@ command_map = command_line_args.CommandMap({'run': run,
                                             'detached': run_detached,
                                             'stop': stop,
                                             'install': install,
+                                            'reinstall': reinstall,
+                                            'catchup': catchup,
                                             'test': test,
                                             'types': check_types,
-                                            'catchup': catchup,
                                             'outdated': list_outdated,
                                             'deptree': dependency_tree,
                                             'add': add,

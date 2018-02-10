@@ -32,8 +32,7 @@ def is_on_branch(target_branch: Branch) -> bool:
     """
     Returns true if current branch is same as target branch.
     """
-    current_branch = sys_calls.get_stdout(['git', 'rev-parse', '--abbrev-ref', 'HEAD'])
-    return current_branch == target_branch
+    return get_current_branch() == target_branch
 
 
 def is_remote_added(remote: Remote) -> bool:
@@ -53,10 +52,28 @@ def is_clean_local() -> bool:
 
 
 # -----------------------------------------------------------------
+# Get current environment
+# -----------------------------------------------------------------
+
+def get_current_branch() -> Branch:
+    """
+    Finds current git branch.
+    """
+    return sys_calls.get_stdout(['git', 'rev-parse', '--abbrev-ref', 'HEAD'])
+
+
+def get_file_hash(file: str) -> str:
+    """
+    Checks HEAD for the hash of given file. Allows for comparisons if file has changed.
+    """
+    return sys_calls.get_stdout(['git', 'rev-parse', f'HEAD:{file}'])
+
+
+# -----------------------------------------------------------------
 # Git commands
 # -----------------------------------------------------------------
 
-def fast_forward_remote(remote: Remote, branch: Branch) -> None:
+def fast_forward(remote: Remote, branch: Branch) -> None:
     """
     Checks given remote for any changes and attempts to fast-forward.
     """
