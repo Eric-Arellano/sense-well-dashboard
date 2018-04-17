@@ -1,8 +1,5 @@
-import App from './App/App'
 import Button from './Button/Button'
-import CommunityPanel from './DashboardView/CommunityPanel'
 import Chart from './Chart/Chart'
-import DashboardView from './DashboardView/DashboardView'
 import Entry from './Panel/Entry'
 import Error from './Error/Error'
 import Footer from './Footer/Footer'
@@ -12,11 +9,8 @@ import Panel from './Panel/Panel'
 import Widget from './Widget/Widget'
 
 export {
-  App,
   Button,
-  CommunityPanel,
   Chart,
-  DashboardView,
   Entry,
   Error,
   Footer,

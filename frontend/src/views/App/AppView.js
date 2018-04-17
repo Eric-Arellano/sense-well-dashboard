@@ -1,8 +1,8 @@
 // @flow
 import React from 'react'
 import { Footer, Header } from 'components'
-import { DashboardViewContainer } from 'containers'
-import type { Community } from 'flow/types'
+import { DashboardContainer } from 'views'
+import type { Community } from 'types'
 import s from './App.module.css'
 
 type Props = {
@@ -14,7 +14,7 @@ const App = ({ community }: Props) => {
     <div className={s.app}>
       <Header />
       <main className={s.body}>
-        <DashboardViewContainer community={community} />
+        <DashboardContainer community={community} />
       </main>
       <Footer />
     </div>

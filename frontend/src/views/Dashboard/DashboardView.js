@@ -1,7 +1,8 @@
 // @flow
 import React from 'react'
-import { CommunityPanel, Widget } from 'components'
-import type { Community, Metric } from 'flow/types'
+import { Widget } from 'components'
+import CommunityPanel from './CommunityPanel'
+import type { Community, Metric } from 'types'
 import s from './DashboardView.module.css'
 
 type Props = {

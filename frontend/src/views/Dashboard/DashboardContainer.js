@@ -1,8 +1,8 @@
 // @flow
 import React, { Component } from 'react'
-import { DashboardView } from 'components'
-import type { Community, Metric } from 'flow/types'
-import { getMetricSummaries } from 'utils/api'
+import DashboardView from './DashboardView'
+import type { Community, Metric } from 'types'
+import { getMetricSummaries } from 'api'
 import { mockMetrics } from 'utils/mock'
 import { withLoadingAndError } from 'decorators'
 

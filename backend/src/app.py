@@ -18,6 +18,11 @@ def render_react():
     return send_from_directory('../../frontend/build', 'index.html')
 
 
+@app.route('/assets/<path:path>')
+def render_react_asset(path):
+    return send_from_directory('../../frontend/build/assets', path)
+
+
 @app.route('/api/test')
 def api_test():
     return 'Server is running! Good luck debugging :O'

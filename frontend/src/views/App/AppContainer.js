@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from 'react'
-import { App } from 'components'
-import type { Community } from 'flow/types'
+import AppView from './AppView'
+import type { Community } from 'types'
 import { mockCommunity } from 'utils/mock'
 
 type Props = { }
@@ -17,7 +17,7 @@ class AppContainer extends Component<Props, State> {
   }
 
   render() {
-    return <App {...this.state} />
+    return <AppView {...this.state} />
   }
 }
 
